@@ -1,0 +1,302 @@
+/* =====================================================
+   CCS114 Finals Laboratory 1 - Stylesheet
+   Theme: dark panel with green accents, split layout
+   Sections: 1. Variables  2. Base  3. Layout
+             4. Banner     5. Header  6. Sections
+             7. Result     8. Button  9. Responsive
+   ===================================================== */
+
+/* ---------- 1. Color variables ---------- */
+:root {
+    --panel-bg: #1a1a1d;
+    --field-bg: #262b3d;
+    --field-border: #3b4259;
+    --text: #f1f3f6;
+    --text-muted: #9ba4b7;
+
+    --green: #22a06b;
+    --green-dark: #0c3b2b;
+    --green-light: #3ddc97;
+
+    --blue-text: #7db4ff;
+    --red-text: #ff8a80;
+    --amber-text: #ffcf5c;
+    --gray-text: #b6bdcc;
+}
+
+/* ---------- 2. Base styles ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Nunito", "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--panel-bg);
+}
+
+p {
+    margin: 0 0 0.75rem;
+}
+
+code {
+    background-color: var(--field-bg);
+    color: var(--green-light);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+/* ---------- 3. Two-column layout ---------- */
+.page {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;   /* wide banner, narrower content */
+    min-height: 100vh;
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+    background-color: var(--panel-bg);
+}
+
+.panel-inner {
+    width: 100%;
+    max-width: 520px;
+}
+
+/* ---------- 4. Left banner (gradients and shapes only) ---------- */
+  .banner {
+    position: relative;
+    overflow: hidden;
+
+    background-image: url("pnc.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ---------- 5. Header ---------- */
+.site-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.school-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 0.1rem;
+}
+
+.school-tagline {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.course-title {
+    margin: 0;
+    font-size: 3.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--text);
+}
+
+.course-subtitle {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--green);
+}
+
+/* Pill-shaped label (same shape as the "Student Login" bar) */
+.pill {
+    text-align: center;
+    margin: 0 0 1.75rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    background-color: var(--green-dark);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ---------- 6. Content sections ---------- */
+.section {
+    margin-bottom: 1.75rem;
+}
+
+.section-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.section-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.score-guide {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.score-guide li {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--field-bg);
+    border: 1px solid var(--field-border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.dot-excellent { background-color: var(--green-light); }
+.dot-passed    { background-color: var(--blue-text); }
+.dot-failed    { background-color: var(--red-text); }
+.dot-invalid   { background-color: var(--amber-text); }
+
+/* ---------- 7. Result box ---------- */
+/* Base look; the color comes from one of the status classes below */
+.result {
+    background-color: var(--field-bg);
+    border: 1px solid var(--field-border);
+    border-left-width: 8px;
+    border-radius: 6px;
+    padding: 1.25rem 1.25rem 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.result-remark-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+/* Name / Score / Remark rows */
+.result-details {
+    margin: 0 0 0.75rem;
+    color: var(--text);
+}
+
+.result-row {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--field-border);
+}
+
+.result-row dt {
+    width: 5.5rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.result-row dd {
+    margin: 0;
+    word-break: break-word;   /* keeps very long names inside the box */
+}
+
+.remark-row dd {
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.result-message {
+    margin-top: 0.5rem;
+}
+
+/* Status colors (one class is added by script.js) */
+.result-waiting   { border-left-color: var(--gray-text);   color: var(--gray-text); }
+.result-excellent { border-left-color: var(--green-light); color: var(--green-light); }
+.result-passed    { border-left-color: var(--blue-text);   color: var(--blue-text); }
+.result-failed    { border-left-color: var(--red-text);    color: var(--red-text); }
+.result-invalid   { border-left-color: var(--amber-text);  color: var(--amber-text); }
+.result-cancelled { border-left-color: var(--gray-text);   color: var(--gray-text); }
+
+/* ---------- 8. Button (rounded, spaced letters like a login button) ---------- */
+.btn {
+    background-color: var(--green);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 2.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #1b8a5c;
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--green-light);
+    outline-offset: 3px;
+}
+
+.site-footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ---------- 9. Tablets and phones ---------- */
+@media (max-width: 800px) {
+    .page {
+        grid-template-columns: 1fr;   /* stack the banner above the content */
+    }
+
+    .banner {
+        height: 130px;
+    }
+
+    .panel {
+        padding: 2rem 1.25rem;
+    }
+
+    .school-name {
+        font-size: 1.6rem;
+    }
+
+    .course-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .result-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
